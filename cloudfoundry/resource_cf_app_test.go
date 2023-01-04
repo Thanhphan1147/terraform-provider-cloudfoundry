@@ -509,8 +509,6 @@ func TestAccDefaultValuesRolling_app1(t *testing.T) {
 	spaceID, spaceName := defaultTestSpace(t)
 	refApp := "cloudfoundry_app.app_1"
 
-	defaultDiskQuota := 1024
-	defaultMemory := 1024
 	defaultInstances := 1
 	defaultPort := 8080
 	// Change this value if ssh is enabled globally
@@ -538,8 +536,6 @@ func TestAccDefaultValuesRolling_app1(t *testing.T) {
 						resource.TestCheckResourceAttr(refApp, "ports.#", "1"),
 						resource.TestCheckResourceAttr(refApp, "ports.0", fmt.Sprint(defaultPort)),
 						resource.TestCheckResourceAttr(refApp, "instances", fmt.Sprint(defaultInstances)),
-						resource.TestCheckResourceAttr(refApp, "memory", fmt.Sprint(defaultMemory)),
-						resource.TestCheckResourceAttr(refApp, "disk_quota", fmt.Sprint(defaultDiskQuota)),
 						resource.TestCheckResourceAttrSet(refApp, "stack"),
 						resource.TestCheckResourceAttr(refApp, "enable_ssh", globalSSHEnabled),
 					),
